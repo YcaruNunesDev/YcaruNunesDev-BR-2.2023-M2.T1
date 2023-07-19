@@ -1,4 +1,5 @@
 import random
+
 from dino_runner.components.obstacles.obstacle import Obstacle
 
 
