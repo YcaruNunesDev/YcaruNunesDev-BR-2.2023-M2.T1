@@ -37,6 +37,8 @@ class Game:
     def run(self):
         # Game loop: events - update - draw
         self.playing = True
+        self.game_speed = 20 # Reseta a velocidade do jogo
+        self.score = 0 # Reseta a pontuação
         self.obstacle_manager.reset_obstacles()
         while self.playing:
             self.events()
@@ -81,11 +83,7 @@ class Game:
 
 
     def draw_score(self):
-        font = pygame.font.Font(FONT_STYLE, 22)
-        text = font.render(f"score: {self.score}", True, (0, 0, 0))
-        text_rect = text.get_rect()
-        text_rect.center = (1000, 50)
-        self.screen.blit(text, text_rect)
+        self.draw_text(f"score: {self.score}", (1000, 50))
 
     def  handle_events_on_menu(self):
         for event in pygame.event.get():
@@ -101,20 +99,21 @@ class Game:
         half_screen_width = SCREEN_WIDTH // 2
 
         if self.death_count == 0:
-            font = pygame.font.Font(FONT_STYLE, 22)
-            text = font.render("Press any key to start", True, (0, 0, 0))
-            text_rect = text.get_rect()
-            text_rect.center = (half_screen_width, half_screen_height)
-            self.screen.blit(text, text_rect)
+           self.draw_text("Press any key to start", (half_screen_width, half_screen_height))
         else:
-            self.screen.blit(ICON, (half_screen_width - 20, half_screen_height - 140))
-            ## mostrar mensagem de "Press any key to restart"
-            ## mostrar score atingido
-            ## mostrar death_count
-
-            ### Resetar score e game_speed quando o jogo reiniciar uma nova rodada do jogo
-            ### Criar método para remover a repetição de código para o texto
+            self.screen.blit(ICON, (half_screen_width - 30, half_screen_height - 130))
+            self.draw_text("Press any key to restart", (half_screen_width, half_screen_height))
+            self.draw_text(f"You score: {self.score}", (half_screen_width, half_screen_height + 50))
+            self.draw_text(f"Contagem de mortes: {self.death_count}", (half_screen_width, half_screen_height + 100))
+            
 
         pygame.display.update()
 
         self.handle_events_on_menu()
+
+    def draw_text(self, text, position):
+        font = pygame.font.Font(FONT_STYLE, 22)
+        rendered_text = font.render(text, True, (0, 0, 0))
+        text_rect = rendered_text.get_rect()
+        text_rect.center = position
+        self.screen.blit(rendered_text, text_rect)
