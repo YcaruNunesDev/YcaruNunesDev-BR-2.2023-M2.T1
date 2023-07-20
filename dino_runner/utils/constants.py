@@ -1,15 +1,19 @@
 import pygame
 import os
+pygame.mixer.init()
 
 # Global Constants
-TITLE = "Chrome Dino Runner"
+TITLE = "Spider Dino Runner"
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
+FONT_STYLE = [
+    os.path.join(IMG_DIR,'Fonts/spider-man.ttf')
+]
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "Other/aranha.png"))
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -46,14 +50,13 @@ DUCKING_HAMMER = [
 ]
 
 SMALL_CACTUS = [
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/hidrante.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Plaquinha.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Cones.png")),
 ]
 LARGE_CACTUS = [
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/lixeira.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/lixeira2.png")),
 ]
 
 BIRD = [
@@ -64,10 +67,17 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+SPIDER_SENSE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Spider_sense.png'))
 
-BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/floor .png'))
+FUNDO = pygame.image.load(os.path.join(IMG_DIR, 'Other/fundo.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hummer"
+SPIDER_SENSE_TYPE = "spider-sense"
+
+
+MAIN_THEME = pygame.mixer.music.load("dino_runner/assets/Other/spider_music.mp3")
